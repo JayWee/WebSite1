@@ -196,7 +196,7 @@ while (count < x):
 </code></pre>
 darunter dann den Inhalt der Schleife setzen. Diese ist jetzt unendlich. Wenn man ans Ende ein <code>counter += 1</code> setzt wird der Counter nach jeden Durchlauf um 1 erhöht und das Programm endet nach x Durchläufen. 
 
-<code>(2,GPIO.IN)</code> definiert Pin 2 als Eingang. Das gegegebn kann man mit der Funktion <code>if GPIO.input(2) == GPIO.HIGH</code> und einem Schlater eine Ampel bauen. Mit <code>print "text"</code> können die einzelnen Schritte in der Konsole beschrieben werden, um ein debugging möglich machen kann. Hier ein Beispiel für eine <a href="https://github.com/JayWee/Gertboard-Tutorial/blob/master/Ampel.py">Ampelschaltung</a>.
+<code>(2,GPIO.IN)</code> definiert Pin 2 als Eingang. Das gegegebn kann man mit der Funktion <code>if GPIO.input(2) == GPIO.HIGH</code> und einem Schlater eine Ampel bauen. Mit <code>print "text"</code> können die einzelnen Schritte in der Konsole beschrieben werden, um ein debugging möglich machen kann. Hier ein Beispiel für eine <a href="https://github.com/JayWee/Gertboard-Tutorial/blob/master/AMPEL.py">Ampelschaltung</a>.
 
 
 <h2 id="Windows">
@@ -246,7 +246,7 @@ Weiterhin kann man über das selbe Menü auch die Remote Komandozeile öffnen, d
 
 
 <h3 id="C#">3.1 Erste Programme über Windows IoT Core</h3>
-Mit Windows IoT Cre kann man in diversen Sprachen seine Programme schreiben. auch hier kann man Python benutzen. Am meisten benutz wird allerdings C#. Im untertschied zu Python, welche eine Script-Sprache ist, müssen C# Programme erst Kompiliert werden, bevor sie ausgeführt werden können. In diesem Tutorial beschäftigen wir uns mit C#.<br />
+Mit Windows IoT Core kann man in diversen Sprachen seine Programme schreiben. Auch hier kann man Python benutzen. Am meisten benutz wird allerdings C#. Im untertschied zu Python, welche eine Script-Sprache ist, müssen C# Programme erst Kompiliert werden, bevor sie ausgeführt werden können. In diesem Tutorial beschäftigen wir uns mit C#.<br />
 Da dieses Tutorial sich mit einer Weiterführung von C# beschäftigt, sollte man vorher ein gennerelles Verständnis für Programiersprachen haben. Für den Einstieg in C# ist hier ein <a href="http://kushellig.de/c/">Liste von Tutorials</a> zum lernen von C#.
 
 <h4>Programieren auf Windows IoT</h4>          
@@ -295,29 +295,51 @@ Für die eben aufgezählten Bedienelemnte gilt:
         <th>UI-Element</th>
         <th>XAML-Befehl</th>
         <th>Funktion</th>
+        <th>Wichtige Attribute</th>
     </tr>
     <tr>
-        <td>Schalter</td><%--Element--%>
-        <td><code>ToggleSwitch</code></td><%--Befehl--%>
-        <td>Ein Schalter, der entweder den Status <em>an</em> oder <em>aus</em> haben kann</td><%--Funktion--%>
+        <td>Schalter</td><!--Element-->
+        <td><code>ToggleSwitch</code></td><!--Befehl-->
+        <td>Ein Schalter, der entweder den Status <em>an</em> oder <em>aus</em> haben kann</td><!--Funktion-->
+        <td>
+            <code>IsOn</code>: Ist ein <code>bool</code> und beschreibt den Status des Switches<br />
+            <code>VerticalAllignement</code>: Definiert die Verticale Position des Switches
+        </td><!--Attribute-->
     </tr>
     <tr>
-        <td>Button</td><%--Element--%>
-        <td><code>Button</code></td><%--Befehl--%>
-        <td></td><%--Funktion--%>
+        <td>Button</td><!--Element-->
+        <td><code>Button</code></td><!--Befehl-->
+        <td>Ein Knopf, der ein Ereignis hervorrufen kann</td><!--Funktion-->
+        <td>
+            <code>Height</code>&amp;<code>Width</code>:Definiert die Höhe und Breite des Buttons<br />
+            <code>Content</code>: Definiert den Text, der auf dem Button seht
+        </td><!--Attribute-->
     </tr>
     <tr>
-        <td>Button</td><%--Element--%>
-        <td><code>Button</code></td><%--Befehl--%>
-        <td></td><%--Funktion--%>
+        <td>Slider</td><!--Element-->
+        <td><code>Slider</code></td><!--Befehl-->
+        <td>Ein Schieberegler, der Verschiedene <code>int</code>-Werte ausgeben kann</td><!--Funktion-->
+        <td>
+            <code>Height</code>&amp;<code>Width</code>: Definiert die Höhe und Breite des Sliders<br />
+            <code>Minimum</code>&amp;<code>Maximum</code>: Definiert den Minimal- und Maximalwert des Sliders<br />
+            <code>StepFrequnecy</code>: Bestimmt in welcher Schrittgröße der Slider vom Minimum zum Maximum geht
+        </td><!--Attribute-->
     </tr>
     <tr>
-        <td>Button</td><%--Element--%>
-        <td><code>Button</code></td><%--Befehl--%>
-        <td></td><%--Funktion--%>
+        <td>Textbox</td><!--Element-->
+        <td><code>TextBlock</code></td><!--Befehl-->
+        <td>Ein Bereich, in dem ein Text steht</td><!--Funktion-->
+        <td>
+            <code>Text</code>: Deffiniert den dargestellten Text<br />
+            <code>Height</code>&amp;<code>Width</code>: Definiert die Höhe und Breite der Textbox 
+        </td><!--Attribute-->
     </tr>
-</table>
-
+</table><br />
+Umfassend braucht man noch ein s.g. <code>StackPanel</code>. Dieses Sorgt dafür, dass alle Objekte in diesem Panel zusammen Gruppiert werden. Durch die Attribute <code>HorizontalAllignement</code> und <code>VerticalAllignement</code> kann die generelle Position im Raum bestimmt werden. Die beiden letztgenannten Atribute können auch auf jedes Objekt einzeln angewendet werden.<br />
+Ein weiteres Attribut, dass für den Aufbau des Panels wichtig ist, ist <code>Margin</code>. Mit diesem Attribut kann ein Rand um das Objekt bestimmt werden. Entweder gibt man nur eine Zahl im Margin an, dann gilt diese für alle Seiten, oder man gibt vier Zahlen an, die die jeweiligen Seiten von links im Uhrzeigersinn um das Objekt herum darstellen.<br />
+Die hier enthaltenen Objekte sind nur einige wenige, aber die für den generellen gebrauch mit dem GPIO-Controller die sinnvollsten, die man mit <em>XAML</em> erstellen kann.<br />
+Die Interaktion mit diesen Objekten passiert via Handler im zugehörigen C#-Code. <br />
+<a href="https://github.com/JayWee/UI/">Hier</a> noch ein Beispiel mit allen aufgeführten Objekten in Benutzung. 
 
 
 <h2 id="Gertboard"> 4. Gertboard </h2>
@@ -357,6 +379,7 @@ Wenn mit externen Geräten oder LEDs gearbeitet werden soll, werden nicht beide 
 
 <h4 id="Program"> Progamieren mit dem Gertboard</h4>
 Mit dem Gerdboard kann genauso programiert werden, wie mit einer direkten Verbindung zum Pi. Zu beachten ist nur, dass die Beschriftung der Pins in <em>J2</em> die des Pi erster Generation ist, und somit für alle nachfolgenden Pi gilt: Der mit <em>21</em> beschriftete Pin auf dem Gertboard ist im System der Pin <em>27</em>. Die Nummerierung auf dem Gertboard entspricht der Nummerierung, die der Pi intern benutzt. <br />
+<a href="https://github.com/JayWee/GertboardTest">Hier</a> zwei Beispiele für eine LED-Steuerung auf dem Gertboard.
 
     
  </article>
