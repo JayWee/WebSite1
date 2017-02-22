@@ -298,7 +298,22 @@ Für die eben aufgezählten Bedienelemnte gilt:
     </tr>
     <tr>
         <td>Schalter</td><%--Element--%>
-        <td></td><%--Befehl--%>
+        <td><code>ToggleSwitch</code></td><%--Befehl--%>
+        <td>Ein Schalter, der entweder den Status <em>an</em> oder <em>aus</em> haben kann</td><%--Funktion--%>
+    </tr>
+    <tr>
+        <td>Button</td><%--Element--%>
+        <td><code>Button</code></td><%--Befehl--%>
+        <td></td><%--Funktion--%>
+    </tr>
+    <tr>
+        <td>Button</td><%--Element--%>
+        <td><code>Button</code></td><%--Befehl--%>
+        <td></td><%--Funktion--%>
+    </tr>
+    <tr>
+        <td>Button</td><%--Element--%>
+        <td><code>Button</code></td><%--Befehl--%>
         <td></td><%--Funktion--%>
     </tr>
 </table>
